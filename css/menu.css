@@ -1,0 +1,407 @@
+/* ===== 扫码菜单展示页样式 ===== */
+:root {
+  --orange: #ff6b35;
+  --orange-light: #ff8c42;
+  --orange-dark: #e55a2b;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===== 简约风 ===== */
+.menu-minimal {
+  background: #fff;
+  min-height: 100vh;
+  padding: 32px 20px 100px;
+}
+
+.menu-minimal .header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.menu-minimal .restaurant-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.menu-minimal .table-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 14px;
+  background: var(--orange-bg, #fff5f0);
+  color: var(--orange);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.menu-minimal .subtitle {
+  color: #999;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+.menu-minimal .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.menu-minimal .item-name {
+  font-size: 1rem;
+}
+
+.menu-minimal .item-price {
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.menu-minimal .item-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: 12px;
+}
+
+/* ===== ins风 ===== */
+.menu-ins {
+  background: linear-gradient(160deg, #fff5f0 0%, #ffe8dc 50%, #ffd4c4 100%);
+  min-height: 100vh;
+  padding: 28px 16px 100px;
+}
+
+.menu-ins .header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.menu-ins .restaurant-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--orange), #ff9a6c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.menu-ins .table-badge {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--orange-dark);
+  font-weight: 600;
+}
+
+.menu-ins .item {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.1);
+}
+
+.menu-ins .item-info {
+  flex: 1;
+}
+
+.menu-ins .item-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.menu-ins .item-price {
+  display: inline-block;
+  margin-top: 4px;
+  background: var(--orange);
+  color: #fff;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.menu-ins .item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: 12px;
+}
+
+/* ===== 复古风 ===== */
+.menu-vintage {
+  background: #f4ead5;
+  min-height: 100vh;
+  padding: 32px 24px 100px;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+.menu-vintage .header {
+  text-align: center;
+  border-bottom: 2px solid #8b6914;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.menu-vintage .restaurant-name {
+  font-size: 1.8rem;
+  color: #5c4033;
+  letter-spacing: 3px;
+}
+
+.menu-vintage .table-badge {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #8b4513;
+  font-style: italic;
+}
+
+.menu-vintage .subtitle {
+  font-size: 0.85rem;
+  color: #a08060;
+  margin-top: 6px;
+}
+
+.menu-vintage .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px dotted #c4a882;
+  color: #4a3728;
+}
+
+.menu-vintage .item-name {
+  font-size: 1.05rem;
+}
+
+.menu-vintage .item-price {
+  color: #8b4513;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.menu-vintage .item-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: 12px;
+}
+
+/* ===== 通用按钮 ===== */
+.btn-cart {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.btn-add {
+  background: var(--orange-bg, #fff5f0);
+  color: var(--orange);
+  border: 1px solid var(--orange);
+}
+
+.btn-add:hover {
+  background: var(--orange);
+  color: #fff;
+}
+
+.btn-order {
+  background: var(--orange);
+  color: #fff;
+}
+
+.btn-order:hover {
+  background: var(--orange-dark);
+}
+
+/* ===== 底部购物车栏 ===== */
+.cart-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.cart-bar.show {
+  transform: translateY(0);
+}
+
+.cart-info {
+  font-size: 0.9rem;
+}
+
+.cart-count {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.cart-total {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.btn-checkout {
+  padding: 10px 24px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-checkout:hover {
+  background: var(--orange-dark);
+}
+
+/* ===== 错误页 ===== */
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  background: #fff5f0;
+}
+
+.error-page h2 {
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+.error-page p {
+  color: #666;
+}
+
+.error-page a {
+  margin-top: 16px;
+  color: var(--orange);
+}
+
+/* ===== Toast ===== */
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===== 下单弹窗 ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  padding: 20px;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  animation: popIn 0.3s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-box h3 {
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+.modal-box p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.modal-box .btn-close {
+  padding: 8px 24px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+@media (max-width: 480px) {
+  .item-actions {
+    flex-direction: column !important;
+  }
+
+  .btn-cart {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+}

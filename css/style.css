@@ -1,0 +1,689 @@
+/* ===== 餐饮菜单二维码生成器 - 全局样式 ===== */
+:root {
+  --orange: #ff6b35;
+  --orange-light: #ff8c42;
+  --orange-dark: #e55a2b;
+  --orange-bg: #fff5f0;
+  --white: #ffffff;
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-400: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-800: #343a40;
+  --shadow: 0 4px 24px rgba(255, 107, 53, 0.12);
+  --radius: 12px;
+  --transition: 0.25s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--orange-bg);
+  color: var(--gray-800);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ===== 头部 ===== */
+.app-header {
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+  color: var(--white);
+  padding: 24px 20px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-header::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background: var(--orange-bg);
+  border-radius: 24px 24px 0 0;
+}
+
+.app-header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.app-header p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* ===== 步骤指示器 ===== */
+.steps-bar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 16px 0;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.step-item {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.step-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: calc(50% + 18px);
+  width: calc(100% - 36px);
+  height: 2px;
+  background: var(--gray-200);
+  transition: background var(--transition);
+}
+
+.step-item.done:not(:last-child)::after,
+.step-item.active:not(:last-child)::after {
+  background: var(--orange);
+}
+
+.step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gray-200);
+  color: var(--gray-600);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  transition: all var(--transition);
+}
+
+.step-item.active .step-dot,
+.step-item.done .step-dot {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.step-label {
+  font-size: 0.75rem;
+  color: var(--gray-600);
+}
+
+.step-item.active .step-label {
+  color: var(--orange-dark);
+  font-weight: 600;
+}
+
+/* ===== 主容器 ===== */
+.app-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+}
+
+.panel {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 20px;
+  animation: fadeInUp 0.4s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panel-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-title .icon {
+  font-size: 1.2rem;
+}
+
+/* ===== 表单元素 ===== */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--gray-600);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ===== 菜品列表 ===== */
+.dish-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.dish-item {
+  display: grid;
+  grid-template-columns: 1fr 100px 36px;
+  gap: 8px;
+  align-items: center;
+  animation: fadeInUp 0.3s ease;
+}
+
+.dish-item input {
+  padding: 8px 12px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.dish-item input:focus {
+  outline: none;
+  border-color: var(--orange);
+}
+
+.btn-remove {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: #fee;
+  color: #e55;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background var(--transition);
+}
+
+.btn-remove:hover {
+  background: #fdd;
+}
+
+/* ===== 模板选择 ===== */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.template-card {
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.template-card:hover {
+  border-color: var(--orange-light);
+}
+
+.template-card.selected {
+  border-color: var(--orange);
+  background: var(--orange-bg);
+}
+
+.template-card .tpl-icon {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+}
+
+.template-card .tpl-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.template-card .tpl-desc {
+  font-size: 0.7rem;
+  color: var(--gray-600);
+  margin-top: 2px;
+}
+
+/* ===== 预设菜单 ===== */
+.preset-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* ===== 按钮 ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--orange-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.35);
+}
+
+.btn-secondary {
+  background: var(--gray-100);
+  color: var(--gray-800);
+  border: 1.5px solid var(--gray-200);
+}
+
+.btn-secondary:hover {
+  background: var(--gray-200);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--orange);
+  border: 1.5px solid var(--orange);
+}
+
+.btn-outline:hover {
+  background: var(--orange-bg);
+}
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* ===== 步骤面板切换 ===== */
+.step-panel {
+  display: none;
+}
+
+.step-panel.active {
+  display: block;
+}
+
+/* ===== 菜单预览 ===== */
+.menu-preview-wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  min-height: 300px;
+}
+
+.menu-preview {
+  min-height: 300px;
+}
+
+/* 预览模板样式 - 简约风 */
+.preview-minimal {
+  background: #fff;
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.preview-minimal .menu-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 4px;
+}
+
+.preview-minimal .menu-subtitle {
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 24px;
+}
+
+.preview-minimal .menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.95rem;
+}
+
+.preview-minimal .menu-price {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* 预览模板 - ins风 */
+.preview-ins {
+  background: linear-gradient(160deg, #fff5f0 0%, #ffe8dc 100%);
+  padding: 28px 20px;
+}
+
+.preview-ins .menu-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--orange), #ff9a6c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.preview-ins .menu-item {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(255, 107, 53, 0.08);
+}
+
+.preview-ins .menu-price {
+  background: var(--orange);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* 预览模板 - 复古风 */
+.preview-vintage {
+  background: #f4ead5;
+  padding: 28px 24px;
+  border: 3px double #8b6914;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+.preview-vintage .menu-title {
+  font-size: 1.6rem;
+  text-align: center;
+  color: #5c4033;
+  border-bottom: 2px solid #8b6914;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.preview-vintage .menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dotted #c4a882;
+  color: #4a3728;
+}
+
+.preview-vintage .menu-price {
+  color: #8b4513;
+  font-weight: 700;
+}
+
+/* ===== 二维码区域 ===== */
+.qr-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.qr-options .color-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.color-row input[type="color"] {
+  width: 44px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.qr-display {
+  text-align: center;
+}
+
+.qr-canvas-wrap {
+  position: relative;
+  display: inline-block;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #fff;
+  padding: 16px;
+}
+
+#qrCanvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.qr-loading {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.qr-loading.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.qr-tip {
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  margin-top: 12px;
+}
+
+.logo-preview {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  margin-top: 8px;
+  display: none;
+}
+
+.logo-preview.show {
+  display: block;
+}
+
+/* ===== 桌号批量 ===== */
+.table-batch {
+  background: var(--gray-100);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.table-qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.table-qr-item {
+  text-align: center;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  animation: fadeInUp 0.4s ease;
+}
+
+.table-qr-item canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.table-qr-item .table-label {
+  font-weight: 600;
+  margin-top: 8px;
+  color: var(--orange-dark);
+}
+
+.table-qr-item .btn-sm {
+  margin-top: 8px;
+}
+
+/* ===== Toast 提示 ===== */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--gray-800);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===== 隐藏 QR 生成容器 ===== */
+#qrHidden {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .template-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qr-section {
+    grid-template-columns: 1fr;
+  }
+
+  .dish-item {
+    grid-template-columns: 1fr 80px 36px;
+  }
+
+  .app-header h1 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel {
+    padding: 16px;
+  }
+
+  .steps-bar {
+    gap: 4px;
+  }
+
+  .step-label {
+    font-size: 0.65rem;
+  }
+}
